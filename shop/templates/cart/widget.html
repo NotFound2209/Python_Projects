@@ -1,0 +1,91 @@
+<table class="table table-bordered" style="color: white;">
+
+    <thead>
+
+        <tr>
+
+            <th colspan="4" class="text-center">
+
+                Shopping Cart
+
+            </th>
+
+        </tr>
+
+        <tr>
+            
+            <th>Image</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Prices</th>
+
+
+        </tr>
+
+    </thead>
+
+
+    <tbody>
+        
+        {% if request.session.cart.items %}
+
+            
+            {% for key, value in request.session.cart.items %}
+                
+                <tr class="text-center">
+
+                    <td style="width: 200px;"><img style='width: 150px; height: 100px;' src="{{value.img}}" alt="Image Not Found"></td>
+                    <td style="width: 200px;">{{value.name}}</td>
+                    <td style="width: 200px;">{{value.quantity}}</td>
+                    <td style="width: 200px;">
+
+                        <a href="{% url 'cart:add' value.product_id %}" class="btn btn-sm btn-success">+</a>
+                        <a href="{% url 'cart:subtract' value.product_id %}" class="btn btn-sm btn-success">-</a>
+
+                        $ {{value.price}}
+
+                    </td>
+
+                </tr>
+
+
+
+
+            {% endfor %}
+                
+            
+        {% else %}
+
+        <tr>
+
+            <th colspan="4" style="text-align: center;">
+                <div class="alert alert-danger">
+                    No Have Products
+                </div>
+            </th>
+
+        </tr>
+
+        {% endif %}
+            
+
+
+    </tbody>
+
+    <tfoot>
+
+        <tr>
+
+            <td colspan="4">
+                
+                Total: $ {{total_cart}}
+
+            </td>
+
+        </tr>
+
+    </tfoot>
+
+
+
+</table>

@@ -1,0 +1,63 @@
+{% extends 'store/base.html' %}
+
+{% load static %}
+
+
+
+{% block content %}
+
+
+    {% for data_post in post %}
+        
+    <section class="page-section clearfix">
+        <div class="container">
+        <div class="intro">
+            <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{{data_post.img.url}}" alt="Image no finded" style="width: 50%;">
+            <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+            <h2 class="section-heading mb-4" >
+                <span class="section-heading-lower">{{data_post.title}}</span>
+                <span class="section-heading-upper" style="font-size: 0.9em;">{{data_post.content}}</span>
+                <span class="section-handing-upper" style="font-size: 0.4em;"></span>
+            </h2>
+            
+                <div style="text-align: left; font-size: 0.8em">
+
+                    Author : {{data_post.author}}
+                    
+
+                </div>
+
+            </div>
+        </div>
+        </div>
+    </section>
+
+
+    {% endfor %}
+    
+
+    <section>
+
+        <div style=" color: greenyellow; width: 70%; height: 3.5%; margin: auto;">
+
+            
+            Categoria: &nbsp;
+
+            {% for posts in post %}
+                
+                
+                {% for category in posts.category.all %}
+                    
+                <a class="linkscategories" href="{% url 'Category' category.id %}">{{category.category_name}}</a> &nbsp;&nbsp;&nbsp;
+
+                {% endfor %}
+                    
+
+            {% endfor %}
+                
+
+        </div>
+
+    </section>
+    
+{% endblock %}

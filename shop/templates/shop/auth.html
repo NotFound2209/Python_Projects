@@ -1,0 +1,18 @@
+{% extends 'Store/base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+
+    <div>
+
+        <h1>You need to be logged in to access the store</h1>
+
+        
+        <p>If you have a account <a href="{% url 'login' %}" style="color: white; text-decoration: underline;">Click Here</a></p>
+        <p>If you no have a account <a href="{% url 'authenticator' %}" style="color: white; text-decoration: underline;">Sign Up Here</a></p>
+
+    </div>
+
+{% endblock %}

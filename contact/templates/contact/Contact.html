@@ -1,0 +1,40 @@
+{% extends 'store/base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+
+    <div class="formcontact">
+
+        {% if 'valid' in request.GET %}
+
+            <p style="color: greenyellow;">Form Sended</p>
+
+        {% endif %}
+        
+        {% if 'error' in request.GET %}
+
+            <p style="color: greenyellow;">Error Submitting Form, Try Later</p>
+
+        {% endif %}
+
+
+        <form action="" method="POST" name="form_contact" style="text-align: center;">{% csrf_token %}
+
+            <table style="color: greenyellow; margin: 20px auto;">
+
+                {{form}}
+
+            </table>
+    
+            <input type="submit" value='Send' style="width: 100px;">
+
+
+
+        </form>
+
+    </div>
+
+{% endblock %}

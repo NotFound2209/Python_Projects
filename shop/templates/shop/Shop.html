@@ -1,0 +1,58 @@
+{% extends 'store/base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+
+
+<div class="container">
+
+
+
+    <div style="float: right;">
+
+
+        <a href="{% url 'Cart' %}" style="color: aliceblue;" class='class=btn btn-success'>Cart</a>
+
+    </div>
+
+    <div class="row">
+    
+        {% for prod in products %}
+
+        <div class="col-md-3">
+        
+            <div class="card" style="width: 100%; margin: 5px 5px;">
+
+                <img src="{{prod.product_img.url}}" class="card-img-top" alt="Image not found">
+
+                <div class="card-body" style="color: rgb(26, 26, 27); text-align: center;">
+
+                    <h7 class="card-title">{{prod.product_name}}</h7>
+
+                    <p class="card-text">USD$ {{prod.product_price}}</p>
+
+                </div>
+
+                <div class="card-footer text-center">
+
+                    <a href="{% url 'cart:add' prod.id %}" class="btn btn-success">Add to the cart</a>
+
+                </div>
+                
+            </div>
+        
+        </div>
+
+        {% endfor %}
+        
+    
+
+    
+    </div>
+
+</div>
+
+{% endblock %}

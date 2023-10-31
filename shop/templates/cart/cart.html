@@ -1,0 +1,46 @@
+{% extends 'Store/base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+
+    <div style="float: center;">
+
+        {% include 'cart/widget.html' %}
+
+    </div>
+
+
+    
+    {% if request.session.cart.items %}
+        
+    <tr>
+
+        <td colspan="4" style="text-align: center;">
+
+            <a href="{% url 'orders' %}" class="btn btn-success">Buy</a>
+
+        </td>
+
+    </tr>
+
+    {% endif %}
+
+    <tr>
+
+        <td>
+
+        <a style='color: white; text-decoration: underline;' href="{% url 'cart:clear' %}">Clear</a> &nbsp;&nbsp;&nbsp;
+        <a style='color: white; text-decoration: underline;' href="{% url 'Shop' %}">Keep Buying</a>
+
+        </td>
+
+    </tr>
+    
+
+    
+
+
+
+{% endblock %}
